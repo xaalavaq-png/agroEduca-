@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#164A35">
-<meta name="description" content="agroEduca: ecosistema educativo inteligente para el aprendizaje universitario de Nutrición Vegetal.">
+<meta name="description" content="agroEduca: ecosistema educativo inteligente de Nutrición Vegetal.">
 <title>agroEduca | Ecosistema Educativo Inteligente</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,1045 +13,774 @@
 
 <style>
 :root {
-  --forest: #164A35;
-  --deep: #103D2D;
-  --green: #22A06B;
-  --mint: #DCEFE1;
-  --yellow: #F2C94C;
-  --white: #FFFFFF;
-  --ink: #263238;
-  --muted: #61736C;
-  --background: #F6F9F6;
-  --line: #DDE8DF;
-  --shadow: 0 12px 35px rgba(22,74,53,.09);
+  --forest:#164A35;
+  --deep:#103D2D;
+  --green:#22A06B;
+  --mint:#DCEFE1;
+  --yellow:#F2C94C;
+  --white:#FFFFFF;
+  --ink:#263238;
+  --muted:#61736C;
+  --background:#F6F9F6;
+  --line:#DDE8DF;
+  --shadow:0 12px 35px rgba(22,74,53,.09);
 }
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
 body {
-  margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
-  color: var(--ink);
-  background: var(--background);
-  line-height: 1.65;
+  margin:0;
+  font-family:Poppins,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--background);
+  line-height:1.65;
+}
+button,input {font:inherit}
+button {cursor:pointer}
+a {color:var(--forest)}
+img,iframe {max-width:100%}
+[hidden] {display:none!important}
+button:focus-visible,a:focus-visible,input:focus-visible {
+  outline:3px solid var(--yellow);
+  outline-offset:3px;
 }
 
-button, input {
-  font: inherit;
-}
-
-button, a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-  outline: 3px solid var(--yellow);
-  outline-offset: 3px;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: var(--forest);
-}
-
-img, iframe {
-  max-width: 100%;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-/* HEADER */
+/* NAVEGACIÓN */
 
 .site-header {
-  background: var(--forest);
-  color: white;
-  padding: 13px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 5px 18px rgba(0,0,0,.1);
+  background:var(--forest);
+  color:white;
+  padding:13px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 5px 18px rgba(0,0,0,.1);
 }
-
 .logo {
-  color: white;
-  font-size: 27px;
-  font-weight: 800;
-  white-space: nowrap;
+  color:white;
+  font-size:27px;
+  font-weight:800;
+  white-space:nowrap;
 }
-
-.logo span {
-  color: var(--yellow);
-}
-
-.logo-icon {
-  display: inline-block;
-  margin-right: 7px;
-}
-
+.logo span {color:var(--yellow)}
+.logo-icon {margin-right:7px}
 .nav-menu {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 4px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:4px;
 }
-
 .nav-menu button {
-  background: transparent;
-  border: 0;
-  color: white;
-  padding: 10px 12px;
-  border-radius: 9px;
-  font-size: 13px;
-  font-weight: 500;
-  transition: background .2s;
+  background:transparent;
+  border:0;
+  color:white;
+  padding:10px 12px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:500;
 }
-
 .nav-menu button:hover,
-.nav-menu button.active {
-  background: var(--green);
-}
-
+.nav-menu button.active {background:var(--green)}
 .mobile-toggle {
-  display: none;
-  background: rgba(255,255,255,.12);
-  color: white;
-  border: 1px solid rgba(255,255,255,.25);
-  border-radius: 10px;
-  font-size: 25px;
-  width: 46px;
-  height: 46px;
+  display:none;
+  background:rgba(255,255,255,.12);
+  color:white;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:10px;
+  font-size:25px;
+  width:46px;
+  height:46px;
 }
 
-/* GLOBAL */
+/* SECCIONES */
 
 main > section {
-  display: none;
-  min-height: 70vh;
-  padding: 58px 5%;
+  display:none;
+  min-height:70vh;
+  padding:58px 5%;
 }
-
 main > section.active {
-  display: block;
-  animation: fadeIn .3s ease;
+  display:block;
+  animation:fadeIn .3s ease;
 }
-
 @keyframes fadeIn {
-  from {opacity:0; transform:translateY(8px)}
-  to {opacity:1; transform:translateY(0)}
+  from {opacity:0;transform:translateY(8px)}
+  to {opacity:1;transform:translateY(0)}
 }
-
 .section-header {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto 38px;
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 38px;
 }
-
 .section-header h2 {
-  font-size: clamp(25px, 3vw, 36px);
-  color: var(--forest);
-  margin: 8px 0 12px;
-  line-height: 1.3;
+  font-size:clamp(25px,3vw,36px);
+  color:var(--forest);
+  margin:8px 0 12px;
+  line-height:1.3;
 }
-
 .section-header p {
-  color: var(--muted);
-  margin: 0;
+  color:var(--muted);
+  margin:0;
 }
-
 .eyebrow {
-  display: inline-block;
-  background: var(--mint);
-  color: var(--forest);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 7px 15px;
-  border-radius: 30px;
-  letter-spacing: .4px;
+  display:inline-block;
+  background:var(--mint);
+  color:var(--forest);
+  font-size:12px;
+  font-weight:700;
+  padding:7px 15px;
+  border-radius:30px;
+  letter-spacing:.4px;
 }
-
 .btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-  padding: 13px 22px;
-  background: var(--green);
-  color: white;
-  border: 0;
-  text-decoration: none;
-  border-radius: 28px;
-  font-weight: 600;
-  font-size: 14px;
-  transition: transform .2s, background .2s;
-  min-height: 46px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:8px;
+  padding:13px 22px;
+  background:var(--green);
+  color:white;
+  border:0;
+  text-decoration:none;
+  border-radius:28px;
+  font-weight:600;
+  font-size:14px;
+  min-height:46px;
+  transition:transform .2s,background .2s;
 }
-
 .btn:hover {
-  background: var(--forest);
-  transform: translateY(-2px);
+  background:var(--forest);
+  transform:translateY(-2px);
 }
-
 .btn-yellow {
-  background: var(--yellow);
-  color: var(--ink);
+  background:var(--yellow);
+  color:var(--ink);
 }
-
 .btn-yellow:hover {
-  background: #dfb735;
-  color: var(--ink);
+  background:#dfb735;
+  color:var(--ink);
 }
-
 .btn-outline {
-  background: transparent;
-  color: var(--forest);
-  border: 2px solid var(--green);
+  background:transparent;
+  color:var(--forest);
+  border:2px solid var(--green);
 }
-
 .btn-outline:hover {
-  background: var(--mint);
-  color: var(--forest);
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 23px;
-}
-
-.card {
-  background: white;
-  padding: 27px;
-  border-radius: 19px;
-  box-shadow: var(--shadow);
-  border-top: 5px solid var(--green);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.card h3 {
-  color: var(--forest);
-  font-size: 19px;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.card p {
-  margin: 0 0 15px;
-  font-size: 14px;
-  color: var(--muted);
-  flex: 1;
-}
-
-.card .btn {
-  align-self: flex-start;
-}
-
-.card-icon {
-  width: 65px;
-  height: 65px;
-  display: grid;
-  place-items: center;
-  background: var(--mint);
-  border-radius: 17px;
-  font-size: 31px;
+  background:var(--mint);
+  color:var(--forest);
 }
 
 /* INICIO */
 
 #inicio {
   background:
-    radial-gradient(circle at 85% 20%, rgba(242,201,76,.16), transparent 28%),
-    radial-gradient(circle at 10% 80%, rgba(34,160,107,.28), transparent 35%),
+    radial-gradient(circle at 85% 20%,rgba(242,201,76,.16),transparent 28%),
+    radial-gradient(circle at 10% 80%,rgba(34,160,107,.28),transparent 35%),
     linear-gradient(130deg,#103D2D,#1B6949);
-  color: white;
-  text-align: center;
-  padding: 95px 5% 75px;
-  min-height: 77vh;
+  color:white;
+  text-align:center;
+  padding:95px 5% 75px;
+  min-height:77vh;
 }
-
 #inicio .eyebrow {
-  background: rgba(255,255,255,.14);
-  color: var(--yellow);
+  background:rgba(255,255,255,.14);
+  color:var(--yellow);
 }
-
 #inicio h1 {
-  color: white;
-  max-width: 900px;
-  margin: 25px auto 18px;
-  font-size: clamp(34px, 5.2vw, 58px);
-  line-height: 1.2;
-  font-weight: 800;
+  color:white;
+  max-width:900px;
+  margin:25px auto 18px;
+  font-size:clamp(34px,5.2vw,58px);
+  line-height:1.2;
+  font-weight:800;
 }
-
-#inicio h1 span {
-  color: var(--yellow);
-}
-
+#inicio h1 span {color:var(--yellow)}
 #inicio .hero-description {
-  max-width: 780px;
-  margin: 0 auto 30px;
-  font-size: 16px;
-  color: #E1F2E6;
+  max-width:780px;
+  margin:0 auto 30px;
+  font-size:16px;
+  color:#E1F2E6;
 }
-
 .hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
 }
-
 .hero-actions .btn-outline {
-  color: white;
-  border-color: white;
+  color:white;
+  border-color:white;
 }
-
-.hero-actions .btn-outline:hover {
-  background: rgba(255,255,255,.14);
-}
-
 .hero-stats {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 55px auto 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:16px;
+  margin:55px auto 0;
 }
-
 .stat {
-  min-width: 175px;
-  padding: 17px 25px;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(255,255,255,.09);
-  border-radius: 15px;
+  min-width:175px;
+  padding:17px 25px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.09);
+  border-radius:15px;
 }
-
 .stat strong {
-  display: block;
-  font-size: 30px;
-  color: var(--yellow);
+  display:block;
+  font-size:30px;
+  color:var(--yellow);
 }
-
-.stat span {
-  font-size: 12px;
-}
+.stat span {font-size:12px}
 
 /* ASIGNATURA */
 
 .subject-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  align-items: center;
-  gap: 35px;
-  max-width: 1200px;
-  margin: auto;
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  align-items:center;
+  gap:35px;
+  max-width:1200px;
+  margin:auto;
 }
-
 .subject-text h3 {
-  color: var(--forest);
-  font-size: 22px;
-  margin-top: 0;
+  color:var(--forest);
+  font-size:22px;
 }
-
-.subject-text p {
-  color: var(--muted);
-}
-
+.subject-text p {color:var(--muted)}
 .subject-list {
-  list-style: none;
-  padding: 0;
+  list-style:none;
+  padding:0;
 }
-
 .subject-list li {
-  padding: 11px 0;
-  display: flex;
-  gap: 11px;
-  align-items: flex-start;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
+  padding:11px 0;
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
 }
-
-.subject-list li:last-child {
-  border-bottom: 0;
-}
-
 .subject-list .check {
-  color: var(--green);
-  font-weight: 800;
-  font-size: 17px;
+  color:var(--green);
+  font-weight:800;
+  font-size:17px;
 }
-
-/* Ilustración propia mediante CSS, sin imagen externa */
-
 .plant-illustration {
-  position: relative;
-  background: linear-gradient(145deg,#DCEFE1,#A7D6B7);
-  border-radius: 26px;
-  min-height: 440px;
-  padding: 28px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position:relative;
+  background:linear-gradient(145deg,#DCEFE1,#A7D6B7);
+  border-radius:26px;
+  min-height:440px;
+  padding:28px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
-
-.plant-illustration::before,
-.plant-illustration::after {
-  content: "";
-  position: absolute;
-  width: 270px;
-  height: 270px;
-  border: 2px solid rgba(22,74,53,.10);
-  border-radius: 50%;
-  right: -60px;
-  top: -70px;
+.plant-illustration::before {
+  content:"";
+  position:absolute;
+  width:270px;
+  height:270px;
+  border:2px solid rgba(22,74,53,.1);
+  border-radius:50%;
+  right:-60px;
+  top:-70px;
 }
-
-.plant-illustration::after {
-  width: 350px;
-  height: 350px;
-  top: 120px;
-  right: -170px;
+.plant-label {
+  color:var(--forest);
+  font-weight:800;
+  font-size:16px;
 }
-
-.plant-illustration .plant-label {
-  color: var(--forest);
-  font-weight: 800;
-  font-size: 16px;
-  position: relative;
-  z-index: 1;
-}
-
 .plant-visual {
-  text-align: center;
-  font-size: 155px;
-  line-height: 1.4;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 12px 6px rgba(0,0,0,.09));
+  text-align:center;
+  font-size:150px;
+  line-height:1.4;
 }
-
 .nutrient-tags {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+  display:flex;
+  gap:12px;
+  justify-content:center;
 }
-
 .nutrient-tags span {
-  width: 65px;
-  height: 65px;
-  display: grid;
-  place-items: center;
-  border-radius: 16px;
-  color: white;
-  font-weight: 800;
-  font-size: 27px;
-  background: var(--forest);
-  box-shadow: 0 7px 16px rgba(22,74,53,.15);
+  width:65px;
+  height:65px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  color:white;
+  font-weight:800;
+  font-size:27px;
+  background:var(--forest);
 }
-
 .illustration-caption {
-  color: var(--forest);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  font-size: 13px;
-  font-weight: 600;
-  margin-top: 15px;
+  color:var(--forest);
+  text-align:center;
+  font-size:13px;
+  font-weight:600;
 }
 
 /* BIBLIOTECA */
 
+.card-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:23px;
+}
+.card {
+  background:white;
+  padding:27px;
+  border-radius:19px;
+  box-shadow:var(--shadow);
+  border-top:5px solid var(--green);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.card h3 {
+  color:var(--forest);
+  font-size:19px;
+  line-height:1.4;
+  margin:0;
+}
+.card p {
+  margin:0 0 15px;
+  font-size:14px;
+  color:var(--muted);
+  flex:1;
+}
+.card .btn {align-self:flex-start}
 .resource-icon {
-  font-size: 32px;
-  background: var(--mint);
-  border-radius: 17px;
-  width: 70px;
-  height: 70px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 5px;
+  font-size:32px;
+  background:var(--mint);
+  border-radius:17px;
+  width:70px;
+  height:70px;
+  display:grid;
+  place-items:center;
 }
-
 .resource-science {
-  margin-top: 25px;
-  background: linear-gradient(120deg,var(--forest),#267957);
-  color: white;
-  border-radius: 20px;
-  padding: 28px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
+  margin-top:25px;
+  background:linear-gradient(120deg,var(--forest),#267957);
+  color:white;
+  border-radius:20px;
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
 }
-
 .resource-science h3 {
-  color: white;
-  margin: 0 0 6px;
-  font-size: 21px;
+  color:white;
+  margin:0 0 6px;
 }
-
 .resource-science p {
-  margin: 0;
-  font-size: 14px;
-  color: #DCEFE1;
-  max-width: 700px;
+  margin:0;
+  font-size:14px;
+  color:#DCEFE1;
 }
-
-.resource-science .btn {
-  flex-shrink: 0;
-}
+.resource-science .btn {flex-shrink:0}
 
 /* MULTIMEDIA */
 
 .video-card {
-  max-width: 990px;
-  margin: auto;
-  padding: 27px;
-  background: white;
-  border-radius: 22px;
-  box-shadow: var(--shadow);
+  max-width:990px;
+  margin:auto;
+  padding:27px;
+  background:white;
+  border-radius:22px;
+  box-shadow:var(--shadow);
 }
-
 .video-card h3 {
-  color: var(--forest);
-  text-align: center;
-  margin: 0 0 8px;
+  color:var(--forest);
+  text-align:center;
+  margin:0 0 8px;
 }
-
 .video-card > p {
-  text-align: center;
-  color: var(--muted);
+  text-align:center;
+  color:var(--muted);
 }
-
 .video-responsive {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  border-radius: 14px;
-  background: var(--deep);
-  margin: 20px auto;
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:14px;
+  background:var(--deep);
+  margin:20px auto;
 }
-
 .video-responsive iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
 }
-
 .video-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
-
 .small-note {
-  font-size: 12px;
-  color: var(--muted);
-  text-align: center;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
 }
 
-/* JUEGOS */
+/* MISIÓN GAMIFICADA */
 
 .game-container {
-  max-width: 1050px;
-  margin: auto;
+  max-width:1050px;
+  margin:auto;
 }
-
 .game-progress {
-  background: var(--mint);
-  border-radius: 18px;
-  padding: 22px 25px;
-  margin-bottom: 22px;
+  background:var(--mint);
+  border-radius:18px;
+  padding:22px 25px;
+  margin-bottom:22px;
 }
-
 .game-progress strong {
-  color: var(--forest);
-  font-size: 18px;
+  color:var(--forest);
+  font-size:18px;
 }
-
 .game-progress p {
-  margin: 8px 0 12px;
-  font-size: 12px;
-  color: var(--muted);
+  margin:8px 0 12px;
+  font-size:12px;
+  color:var(--muted);
 }
-
 progress {
-  display: block;
-  width: 100%;
-  height: 13px;
-  border: 0;
-  accent-color: var(--green);
+  display:block;
+  width:100%;
+  height:13px;
+  accent-color:var(--green);
 }
-
 .game-tabs {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 13px;
-  margin: 20px 0;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:13px;
+  margin:20px 0;
 }
-
 .game-tab {
-  background: white;
-  padding: 18px 14px;
-  color: var(--forest);
-  border: 2px solid var(--line);
-  border-radius: 15px;
-  text-align: center;
-  transition: .2s;
+  background:white;
+  padding:18px 14px;
+  color:var(--forest);
+  border:2px solid var(--line);
+  border-radius:15px;
+  text-align:center;
 }
-
 .game-tab strong {
-  display: block;
-  font-size: 18px;
+  display:block;
+  font-size:18px;
 }
-
 .game-tab span {
-  display: block;
-  font-size: 12px;
-  margin-top: 5px;
+  display:block;
+  font-size:12px;
+  margin-top:5px;
 }
-
-.game-tab.selected,
-.game-tab[aria-selected="true"] {
-  background: var(--forest);
-  border-color: var(--forest);
-  color: white;
+.game-tab.selected {
+  background:var(--forest);
+  border-color:var(--forest);
+  color:white;
 }
-
 .game-panel {
-  background: white;
-  padding: 22px;
-  border-radius: 19px;
-  box-shadow: var(--shadow);
+  background:white;
+  padding:22px;
+  border-radius:19px;
+  box-shadow:var(--shadow);
 }
-
 .game-panel h3 {
-  color: var(--forest);
-  margin: 0;
+  color:var(--forest);
+  margin:0;
 }
-
 .game-panel > p {
-  color: var(--muted);
-  font-size: 14px;
+  color:var(--muted);
+  font-size:14px;
 }
-
 .game-frame {
-  width: 100%;
-  height: 690px;
-  display: block;
-  background: #F1F5F1;
-  border: 0;
-  border-radius: 13px;
+  width:100%;
+  height:690px;
+  display:block;
+  background:#F1F5F1;
+  border:0;
+  border-radius:13px;
 }
-
 .game-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 17px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:17px;
 }
-
 .game-done {
-  display: inline-flex;
-  gap: 9px;
-  align-items: center;
-  color: var(--forest);
-  font-weight: 600;
-  font-size: 13px;
+  display:inline-flex;
+  gap:9px;
+  align-items:center;
+  color:var(--forest);
+  font-weight:600;
+  font-size:13px;
 }
-
 .game-done input {
-  width: 21px;
-  height: 21px;
-  accent-color: var(--green);
+  width:21px;
+  height:21px;
+  accent-color:var(--green);
 }
 
-/* CHAT */
+/* AGROTUTOR IA */
 
 .chat {
-  background: white;
-  max-width: 870px;
-  margin: auto;
-  border-radius: 21px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+  background:white;
+  max-width:870px;
+  margin:auto;
+  border-radius:21px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
 }
-
 .chat-header {
-  background: var(--forest);
-  padding: 20px 25px;
-  color: white;
+  background:var(--forest);
+  padding:20px 25px;
+  color:white;
 }
-
 .chat-header h3 {
-  color: white;
-  margin: 0;
-  font-size: 20px;
+  color:white;
+  margin:0;
+  font-size:20px;
 }
-
-.chat-header small {
-  color: #CFE9D6;
-}
-
+.chat-header small {color:#CFE9D6}
 .chat-messages {
-  height: 425px;
-  overflow-y: auto;
-  background: #FAFCFA;
-  padding: 22px;
-  scroll-behavior: smooth;
+  height:425px;
+  overflow-y:auto;
+  background:#FAFCFA;
+  padding:22px;
+  scroll-behavior:smooth;
 }
-
 .message {
-  display: flex;
-  margin-bottom: 14px;
+  display:flex;
+  margin-bottom:14px;
 }
-
-.message.user {
-  justify-content: flex-end;
-}
-
+.message.user {justify-content:flex-end}
 .bubble {
-  background: var(--mint);
-  padding: 13px 17px;
-  border-radius: 16px;
-  max-width: 85%;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 14px;
-  line-height: 1.7;
+  background:var(--mint);
+  padding:13px 17px;
+  border-radius:16px;
+  max-width:85%;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font-size:14px;
+  line-height:1.7;
 }
-
 .message.user .bubble {
-  background: var(--green);
-  color: white;
+  background:var(--green);
+  color:white;
 }
-
 .chat-suggestions {
-  padding: 12px 18px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  padding:12px 18px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
 }
-
 .chat-suggestions button {
-  border: 1px solid var(--line);
-  background: var(--mint);
-  color: var(--forest);
-  border-radius: 20px;
-  font-size: 12px;
-  padding: 9px 13px;
+  border:1px solid var(--line);
+  background:var(--mint);
+  color:var(--forest);
+  border-radius:20px;
+  font-size:12px;
+  padding:9px 13px;
 }
-
 .chat-input {
-  display: flex;
-  gap: 10px;
-  padding: 16px;
-  border-top: 1px solid var(--line);
+  display:flex;
+  gap:10px;
+  padding:16px;
+  border-top:1px solid var(--line);
 }
-
 .chat-input input {
-  min-width: 0;
-  flex: 1;
-  border: 1px solid #C5D6CB;
-  border-radius: 28px;
-  padding: 12px 17px;
-  font-size: 14px;
+  min-width:0;
+  flex:1;
+  border:1px solid #C5D6CB;
+  border-radius:28px;
+  padding:12px 17px;
+  font-size:14px;
 }
-
 .chat-input button:disabled {
-  opacity: .6;
-  cursor: wait;
+  opacity:.6;
+  cursor:wait;
 }
 
-/* FOOTER */
+/* CRÉDITOS */
 
 footer {
-  background: var(--ink);
-  color: white;
-  padding: 42px 5% 26px;
+  background:var(--ink);
+  color:white;
+  padding:42px 5% 26px;
 }
-
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr 1fr;
-  gap: 30px;
-  max-width: 1250px;
-  margin: auto;
+  display:grid;
+  grid-template-columns:1fr 1.4fr 1fr;
+  gap:30px;
+  max-width:1250px;
+  margin:auto;
 }
-
 .footer-grid h4 {
-  color: white;
-  margin: 0 0 12px;
+  color:white;
+  margin:0 0 12px;
 }
-
 .footer-grid p {
-  color: #D5DDDA;
-  font-size: 12px;
-  margin: 6px 0;
+  color:#D5DDDA;
+  font-size:12px;
+  margin:6px 0;
 }
-
 .footer-bottom {
-  text-align: center;
-  border-top: 1px solid #ffffff20;
-  margin-top: 28px;
-  padding-top: 19px;
-  font-size: 12px;
-  color: #B4C5BC;
+  text-align:center;
+  border-top:1px solid #ffffff20;
+  margin-top:28px;
+  padding-top:19px;
+  font-size:12px;
+  color:#B4C5BC;
 }
 
 /* TABLET */
 
-@media (max-width: 1050px) {
-  .site-header {
-    padding: 12px 4%;
-  }
-
+@media(max-width:1050px) {
   .nav-menu button {
-    padding: 9px 8px;
-    font-size: 12px;
+    padding:9px 8px;
+    font-size:12px;
   }
-
   .card-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-
-  .subject-grid {
-    gap: 22px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
 
-/* MOBILE */
+/* CELULARES */
 
-@media (max-width: 760px) {
+@media(max-width:760px) {
   .site-header {
-    padding: 11px 5%;
-    position: sticky;
-    flex-wrap: wrap;
+    padding:11px 5%;
+    flex-wrap:wrap;
   }
-
-  .logo {
-    font-size: 24px;
-  }
-
+  .logo {font-size:24px}
   .mobile-toggle {
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
   }
-
   .nav-menu {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 5px;
-    padding: 11px 0 5px;
+    display:none;
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:5px;
+    padding:11px 0 5px;
   }
-
-  .nav-menu.open {
-    display: flex;
-  }
-
+  .nav-menu.open {display:flex}
   .nav-menu button {
-    text-align: left;
-    width: 100%;
-    padding: 13px 16px;
-    font-size: 14px;
-    min-height: 45px;
+    width:100%;
+    text-align:left;
+    padding:13px 16px;
+    font-size:14px;
+    min-height:45px;
   }
-
   main > section {
-    padding: 34px 5%;
-    min-height: 70vh;
+    padding:34px 5%;
   }
-
   #inicio {
-    padding: 65px 6%;
-    min-height: 75vh;
+    padding:65px 6%;
   }
-
   #inicio h1 {
-    font-size: clamp(30px,8vw,41px);
+    font-size:clamp(30px,8vw,41px);
   }
-
   #inicio .hero-description {
-    font-size: 14px;
+    font-size:14px;
   }
-
   .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction:column;
+    align-items:stretch;
   }
-
-  .hero-actions .btn {
-    width: 100%;
-  }
-
+  .hero-actions .btn {width:100%}
   .hero-stats {
-    gap: 10px;
-    margin-top: 35px;
+    gap:10px;
+    margin-top:35px;
   }
-
   .stat {
-    min-width: 130px;
-    flex: 1 1 130px;
-    padding: 14px;
+    min-width:130px;
+    flex:1 1 130px;
   }
-
-  .stat strong {
-    font-size: 24px;
-  }
-
   .subject-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
-
   .plant-illustration {
-    min-height: 350px;
+    min-height:350px;
   }
-
   .plant-visual {
-    font-size: 105px;
+    font-size:105px;
   }
-
   .card-grid {
-    grid-template-columns: 1fr;
-    gap: 17px;
+    grid-template-columns:1fr;
+    gap:17px;
   }
-
-  .card {
-    padding: 23px;
-  }
-
   .resource-science {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:24px;
   }
-
-  .resource-science .btn {
-    width: 100%;
-  }
-
-  .video-card {
-    padding: 15px;
-  }
-
+  .resource-science .btn {width:100%}
+  .video-card {padding:15px}
   .video-actions {
-    flex-direction: column;
+    flex-direction:column;
   }
-
-  .video-actions .btn {
-    width: 100%;
-  }
-
+  .video-actions .btn {width:100%}
   .game-tabs {
-    grid-template-columns: 1fr;
-    gap: 9px;
+    grid-template-columns:1fr;
+    gap:9px;
   }
-
-  .game-tab {
-    padding: 13px;
-  }
-
-  .game-panel {
-    padding: 12px;
-  }
-
-  .game-frame {
-    height: 570px;
-  }
-
+  .game-tab {padding:13px}
+  .game-panel {padding:12px}
+  .game-frame {height:570px}
   .game-bottom {
-    align-items: stretch;
-    flex-direction: column;
+    align-items:stretch;
+    flex-direction:column;
   }
-
-  .game-bottom .btn {
-    width: 100%;
-  }
-
+  .game-bottom .btn {width:100%}
   .chat-messages {
-    height: 54vh;
-    min-height: 300px;
-    max-height: 530px;
-    padding: 13px;
+    height:54vh;
+    min-height:300px;
+    max-height:530px;
+    padding:13px;
   }
-
   .bubble {
-    max-width: 93%;
-    font-size: 13px;
+    max-width:93%;
+    font-size:13px;
   }
-
   .chat-input {
-    padding: 10px;
-    gap: 7px;
+    padding:10px;
+    gap:7px;
   }
-
   .chat-input input {
-    font-size: 16px;
-    padding: 12px;
+    font-size:16px;
+    padding:12px;
   }
-
   .chat-input .btn {
-    padding: 12px;
-    border-radius: 14px;
+    padding:12px;
+    border-radius:14px;
   }
-
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
+    grid-template-columns:1fr;
+    gap:22px;
   }
 }
 
-@media (max-width: 360px) {
-  .logo {
-    font-size: 21px;
-  }
-
-  .stat {
-    flex-basis: 100%;
-  }
-
-  .nutrient-tags span {
-    width: 55px;
-    height: 55px;
-  }
+@media(max-width:360px) {
+  .logo {font-size:21px}
+  .stat {flex-basis:100%}
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
   }
 }
 </style>
@@ -1065,17 +794,17 @@ footer {
   </div>
 
   <button
-    type="button"
     class="mobile-toggle"
     id="mobile-toggle"
-    aria-label="Abrir menú de navegación"
+    type="button"
+    aria-label="Abrir menú"
     aria-controls="nav-menu"
     aria-expanded="false"
     onclick="toggleMenu()">
     ☰
   </button>
 
-  <nav class="nav-menu" id="nav-menu" aria-label="Menú principal">
+  <nav class="nav-menu" id="nav-menu" aria-label="Navegación principal">
     <button class="active" data-section="inicio" onclick="navigate('inicio')">Inicio</button>
     <button data-section="asignatura" onclick="navigate('asignatura')">Asignatura</button>
     <button data-section="biblioteca" onclick="navigate('biblioteca')">Biblioteca</button>
@@ -1090,10 +819,7 @@ footer {
 <!-- INICIO -->
 
 <section id="inicio" class="active">
-
-  <span class="eyebrow">
-    ECOSISTEMA EDUCATIVO INTELIGENTE
-  </span>
+  <span class="eyebrow">ECOSISTEMA EDUCATIVO INTELIGENTE</span>
 
   <h1>
     Transforma tu aprendizaje en
@@ -1126,24 +852,20 @@ footer {
       <strong>4</strong>
       <span>Recursos y colección científica</span>
     </div>
-
     <div class="stat">
       <strong>3</strong>
       <span>Misiones educativas</span>
     </div>
-
     <div class="stat">
       <strong>IA</strong>
       <span>AgroTutor inteligente</span>
     </div>
   </div>
-
 </section>
 
 <!-- ASIGNATURA -->
 
 <section id="asignatura">
-
   <div class="section-header">
     <span class="eyebrow">FUNDAMENTOS ACADÉMICOS</span>
     <h2>Conoce tu asignatura: Nutrición Vegetal</h2>
@@ -1154,7 +876,6 @@ footer {
   </div>
 
   <div class="subject-grid">
-
     <div class="subject-text">
       <h3>Fundamentos de la Nutrición Mineral</h3>
 
@@ -1172,7 +893,7 @@ footer {
         </li>
         <li>
           <span class="check">✓</span>
-          <span><strong>Fósforo (P):</strong> interviene en la transferencia de energía y procesos metabólicos.</span>
+          <span><strong>Fósforo (P):</strong> interviene en la transferencia de energía y los procesos metabólicos.</span>
         </li>
         <li>
           <span class="check">✓</span>
@@ -1184,12 +905,11 @@ footer {
         </li>
         <li>
           <span class="check">✓</span>
-          <span><strong>Fertilización:</strong> utiliza requerimientos del cultivo y datos analíticos para calcular aportes nutricionales.</span>
+          <span><strong>Fertilización:</strong> considera los requerimientos del cultivo y los datos analíticos.</span>
         </li>
       </ul>
 
       <h3>Resultados de aprendizaje</h3>
-
       <p>
         Al finalizar, el estudiante podrá reconocer posibles
         deficiencias de nutrientes, interpretar datos básicos
@@ -1200,35 +920,26 @@ footer {
 
     <div class="plant-illustration"
       role="img"
-      aria-label="Ilustración de una planta junto a los nutrientes nitrógeno, fósforo y potasio">
-
-      <span class="plant-label">
-        NUTRICIÓN VEGETAL
-      </span>
-
+      aria-label="Ilustración de una planta y nutrientes N, P y K">
+      <span class="plant-label">NUTRICIÓN VEGETAL</span>
       <div class="plant-visual" aria-hidden="true">🌱</div>
-
       <div>
         <div class="nutrient-tags" aria-hidden="true">
           <span>N</span>
           <span>P</span>
           <span>K</span>
         </div>
-
         <p class="illustration-caption">
           Nutrientes esenciales para el desarrollo vegetal
         </p>
       </div>
     </div>
-
   </div>
-
 </section>
 
 <!-- BIBLIOTECA -->
 
 <section id="biblioteca">
-
   <div class="section-header">
     <span class="eyebrow">APRENDE A TU RITMO</span>
     <h2>Biblioteca digital agroEduca</h2>
@@ -1239,7 +950,6 @@ footer {
   </div>
 
   <div class="card-grid">
-
     <article class="card">
       <div class="resource-icon">🌿</div>
       <h3>Diagnóstico visual de deficiencias N, P y K</h3>
@@ -1250,8 +960,7 @@ footer {
       </p>
       <a class="btn"
         href="https://www.canva.com/design/DAHXjnh_TYQ/7oUYtZYpQ6hveF3q00yeJg/edit"
-        target="_blank"
-        rel="noopener noreferrer">
+        target="_blank" rel="noopener noreferrer">
         Ver infografía
       </a>
     </article>
@@ -1260,14 +969,12 @@ footer {
       <div class="resource-icon">🎧</div>
       <h3>Protocolo de muestreo foliar</h3>
       <p>
-        Recurso narrativo para comprender las etapas
-        de recolección, conservación y manejo de
-        muestras foliares para análisis químico.
+        Recurso narrativo sobre las etapas de recolección,
+        conservación y manejo de muestras foliares.
       </p>
       <a class="btn"
         href="https://drive.google.com/drive/folders/1C0LjnU472phVfmGus1JvmBRfVdkWwpLH?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer">
+        target="_blank" rel="noopener noreferrer">
         Escuchar audio
       </a>
     </article>
@@ -1276,46 +983,38 @@ footer {
       <div class="resource-icon">🔬</div>
       <h3>Taller interactivo de diagnóstico nutricional</h3>
       <p>
-        Actividad de autoevaluación que permite aplicar
-        conocimientos sobre muestreo foliar y diagnóstico
-        nutricional mediante situaciones prácticas.
+        Actividad de autoevaluación sobre muestreo foliar
+        y diagnóstico nutricional mediante situaciones prácticas.
       </p>
       <a class="btn"
         href="https://gamma.app/docs/Taller-Interactivo-Diagnostico-Nutricional-y-Muestreo-Foliar-1zkcpfzl2t8j69o"
-        target="_blank"
-        rel="noopener noreferrer">
+        target="_blank" rel="noopener noreferrer">
         Iniciar taller
       </a>
     </article>
-
   </div>
 
   <div class="resource-science">
-
     <div>
       <h3>📚 Recursos científicos de consulta</h3>
       <p>
-        Accede a la colección complementaria de documentos
-        científicos y materiales de consulta para profundizar
-        en los contenidos de Nutrición Vegetal.
+        Colección complementaria de documentos científicos
+        y materiales de consulta para profundizar en
+        los contenidos de Nutrición Vegetal.
       </p>
     </div>
 
     <a class="btn btn-yellow"
       href="https://drive.google.com/drive/folders/1fAKN_mpE2UH7NseNoMJu4NZGL4Tm3Ulw?usp=sharing"
-      target="_blank"
-      rel="noopener noreferrer">
+      target="_blank" rel="noopener noreferrer">
       Consultar recursos científicos
     </a>
-
   </div>
-
 </section>
 
 <!-- MULTIMEDIA -->
 
 <section id="multimedia">
-
   <div class="section-header">
     <span class="eyebrow">MULTIMEDIA GENERADA CON IA</span>
     <h2>Tu misión comienza aquí</h2>
@@ -1326,16 +1025,14 @@ footer {
   </div>
 
   <div class="video-card">
-
     <h3>🎬 AgroGuía: presentación de la misión</h3>
 
     <p>
-      Un video educativo elaborado con inteligencia artificial
+      Video educativo elaborado con inteligencia artificial
       para introducir la aventura «¡Rescata el cultivo!».
     </p>
 
     <div class="video-responsive">
-
       <iframe
         src="https://app.heygen.com/embeds/fca05dfd986c457ba9d2b60f83d6fa68"
         title="AgroGuía: presentación de agroEduca"
@@ -1343,15 +1040,12 @@ footer {
         allow="encrypted-media; fullscreen"
         allowfullscreen>
       </iframe>
-
     </div>
 
     <div class="video-actions">
-
       <a class="btn"
         href="https://app.heygen.com/videos/avatar-video-fca05dfd986c457ba9d2b60f83d6fa68"
-        target="_blank"
-        rel="noopener noreferrer">
+        target="_blank" rel="noopener noreferrer">
         Ver video en HeyGen
       </a>
 
@@ -1359,22 +1053,18 @@ footer {
         onclick="navigate('gamificacion')">
         Comenzar la misión
       </button>
-
     </div>
 
     <p class="small-note">
       Si el video no se reproduce dentro de la página,
       utiliza el botón «Ver video en HeyGen».
     </p>
-
   </div>
-
 </section>
 
-<!-- MISION GAMIFICADA -->
+<!-- JUEGOS EDUCAPLAY -->
 
 <section id="gamificacion">
-
   <div class="section-header">
     <span class="eyebrow">APRENDIZAJE GAMIFICADO</span>
     <h2>🎮 Misión agroEduca: ¡Rescata el cultivo!</h2>
@@ -1386,29 +1076,23 @@ footer {
   </div>
 
   <div class="game-container">
-
     <div class="game-progress">
       <strong id="progress-text">
         0 de 3 niveles completados
       </strong>
-
       <p>
         Completa cada actividad en Educaplay y marca
-        manualmente los niveles que hayas terminado.
+        manualmente los niveles terminados.
         Las puntuaciones reales se consultan en Educaplay.
       </p>
-
       <progress id="progress-bar" value="0" max="3"></progress>
     </div>
 
-    <div class="game-tabs"
-      role="tablist"
+    <div class="game-tabs" role="tablist"
       aria-label="Seleccionar nivel educativo">
 
-      <button class="game-tab selected"
-        id="tab-0"
-        type="button"
-        role="tab"
+      <button class="game-tab selected" id="tab-0"
+        type="button" role="tab"
         aria-controls="level-0"
         aria-selected="true"
         onclick="selectLevel(0)">
@@ -1416,10 +1100,8 @@ footer {
         <span>Detectives de nutrientes</span>
       </button>
 
-      <button class="game-tab"
-        id="tab-1"
-        type="button"
-        role="tab"
+      <button class="game-tab" id="tab-1"
+        type="button" role="tab"
         aria-controls="level-1"
         aria-selected="false"
         onclick="selectLevel(1)">
@@ -1427,62 +1109,48 @@ footer {
         <span>Analistas del suelo</span>
       </button>
 
-      <button class="game-tab"
-        id="tab-2"
-        type="button"
-        role="tab"
+      <button class="game-tab" id="tab-2"
+        type="button" role="tab"
         aria-controls="level-2"
         aria-selected="false"
         onclick="selectLevel(2)">
         <strong>Nivel 3</strong>
         <span>Expertos en fertilización</span>
       </button>
-
     </div>
 
-    <div class="game-panel"
-      id="level-0"
-      role="tabpanel"
-      aria-labelledby="tab-0">
+    <div class="game-panel" id="level-0"
+      role="tabpanel" aria-labelledby="tab-0">
 
       <h3>Nivel 1: Detectives de nutrientes</h3>
       <p>
-        Identifica deficiencias de nitrógeno, fósforo y potasio
-        mediante preguntas sobre síntomas nutricionales.
+        Identifica deficiencias de nitrógeno, fósforo
+        y potasio mediante preguntas sobre síntomas.
       </p>
 
       <iframe class="game-frame"
         title="Educaplay: Detectives de nutrientes"
         src="https://www.educaplay.com/game/31312297-agroeduca_nivel_1_detectives_de_nutrientes.html"
-        loading="lazy"
-        allow="fullscreen; autoplay"
+        loading="lazy" allow="fullscreen; autoplay"
         allowfullscreen>
       </iframe>
 
       <div class="game-bottom">
-
         <a class="btn btn-outline"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.educaplay.com/learning-resources/31312297-agroeduca_nivel_1_detectives_de_nutrientes.html">
+          href="https://www.educaplay.com/learning-resources/31312297-agroeduca_nivel_1_detectives_de_nutrientes.html"
+          target="_blank" rel="noopener noreferrer">
           Abrir Nivel 1 en Educaplay
         </a>
-
         <label class="game-done">
           <input type="checkbox" class="level-done"
-            data-index="0"
             onchange="updateProgress()">
           Ya completé este nivel
         </label>
-
       </div>
     </div>
 
-    <div class="game-panel"
-      id="level-1"
-      role="tabpanel"
-      aria-labelledby="tab-1"
-      hidden>
+    <div class="game-panel" id="level-1"
+      role="tabpanel" aria-labelledby="tab-1" hidden>
 
       <h3>Nivel 2: Analistas del suelo</h3>
       <p>
@@ -1493,35 +1161,26 @@ footer {
       <iframe class="game-frame"
         title="Educaplay: Analistas del suelo"
         src="https://www.educaplay.com/game/31312327-agroeduca_nivel_2_analistas_del_suelo.html"
-        loading="lazy"
-        allow="fullscreen; autoplay"
+        loading="lazy" allow="fullscreen; autoplay"
         allowfullscreen>
       </iframe>
 
       <div class="game-bottom">
-
         <a class="btn btn-outline"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.educaplay.com/learning-resources/31312327-agroeduca_nivel_2_analistas_del_suelo.html">
+          href="https://www.educaplay.com/learning-resources/31312327-agroeduca_nivel_2_analistas_del_suelo.html"
+          target="_blank" rel="noopener noreferrer">
           Abrir Nivel 2 en Educaplay
         </a>
-
         <label class="game-done">
           <input type="checkbox" class="level-done"
-            data-index="1"
             onchange="updateProgress()">
           Ya completé este nivel
         </label>
-
       </div>
     </div>
 
-    <div class="game-panel"
-      id="level-2"
-      role="tabpanel"
-      aria-labelledby="tab-2"
-      hidden>
+    <div class="game-panel" id="level-2"
+      role="tabpanel" aria-labelledby="tab-2" hidden>
 
       <h3>Nivel 3: Expertos en fertilización</h3>
       <p>
@@ -1532,50 +1191,39 @@ footer {
       <iframe class="game-frame"
         title="Educaplay: Expertos en fertilización"
         src="https://www.educaplay.com/game/31312375-agroeduca_nivel_3_expertos_en_fertilizacion.html"
-        loading="lazy"
-        allow="fullscreen; autoplay"
+        loading="lazy" allow="fullscreen; autoplay"
         allowfullscreen>
       </iframe>
 
       <div class="game-bottom">
-
         <a class="btn btn-outline"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.educaplay.com/learning-resources/31312375-agroeduca_nivel_3_expertos_en_fertilizacion.html">
+          href="https://www.educaplay.com/learning-resources/31312375-agroeduca_nivel_3_expertos_en_fertilizacion.html"
+          target="_blank" rel="noopener noreferrer">
           Abrir Nivel 3 en Educaplay
         </a>
-
         <label class="game-done">
           <input type="checkbox" class="level-done"
-            data-index="2"
             onchange="updateProgress()">
           Ya completé este nivel
         </label>
-
       </div>
     </div>
-
   </div>
-
 </section>
 
-<!-- AGROTUTOR IA -->
+<!-- TUTOR IA -->
 
 <section id="tutor">
-
   <div class="section-header">
     <span class="eyebrow">APRENDIZAJE ASISTIDO POR IA</span>
     <h2>🤖 AgroTutor IA</h2>
     <p>
-      Resuelve tus dudas, comprende conceptos
-      científicos y fortalece tu razonamiento agronómico
-      con nuestro asistente virtual.
+      Resuelve tus dudas, comprende conceptos científicos
+      y fortalece tu razonamiento agronómico.
     </p>
   </div>
 
   <div class="chat">
-
     <div class="chat-header">
       <h3>🌱 AgroTutor IA</h3>
       <small>
@@ -1583,11 +1231,8 @@ footer {
       </small>
     </div>
 
-    <div class="chat-messages"
-      id="chat-messages"
-      role="log"
-      aria-live="polite"
-      aria-relevant="additions text">
+    <div class="chat-messages" id="chat-messages"
+      role="log" aria-live="polite">
 
       <div class="message bot">
         <div class="bubble">
@@ -1598,66 +1243,55 @@ Puedo ayudarte a comprender las deficiencias de nutrientes, interpretar análisi
 ¿Qué te gustaría aprender hoy?
         </div>
       </div>
-
     </div>
 
     <div class="chat-suggestions">
-
       <button type="button"
         onclick="fillQuestion('¿Cuál es la función del nitrógeno en las plantas?')">
         Función del nitrógeno
       </button>
-
       <button type="button"
         onclick="fillQuestion('¿Cómo se interpreta un análisis de suelo?')">
         Análisis de suelo
       </button>
-
       <button type="button"
         onclick="fillQuestion('¿Cómo calculo una dosis de urea al 46 %?')">
         Cálculo de urea
       </button>
-
     </div>
 
     <form class="chat-input" id="chat-form">
-
-      <input
-        type="text"
-        id="chat-text"
+      <input type="text" id="chat-text"
         maxlength="1400"
         placeholder="Escribe tu consulta agronómica..."
         aria-label="Pregunta para AgroTutor IA"
         required>
 
-      <button class="btn" type="submit" id="send-button">
-        Enviar
-      </button>
-
+      <button class="btn" type="submit"
+        id="send-button">Enviar</button>
     </form>
-
   </div>
 
   <p class="small-note" style="margin-top:18px">
-    AgroTutor IA utiliza inteligencia artificial y puede cometer errores.
-    Verifica la información antes de aplicar recomendaciones agronómicas.
-    No compartas información personal o confidencial.
+    AgroTutor IA puede cometer errores.
+    Verifica la información antes de aplicar recomendaciones
+    agronómicas y no compartas datos personales.
   </p>
-
 </section>
 
 </main>
 
-<!-- PIE DE PAGINA -->
+<!-- PIE DE PÁGINA CORREGIDO -->
 
 <footer>
-
   <div class="footer-grid">
 
     <div>
       <div class="logo">🌱 agro<span>Educa</span></div>
       <p>«Cultivando conocimiento, cosechando soluciones»</p>
-      <p>Ecosistema Educativo Inteligente de Nutrición Vegetal.</p>
+      <p>
+        Ecosistema Educativo Inteligente de Nutrición Vegetal.
+      </p>
     </div>
 
     <div>
@@ -1668,14 +1302,14 @@ Puedo ayudarte a comprender las deficiencias de nutrientes, interpretar análisi
         e Investigación en Educación Superior.
       </p>
       <p>
-        Asignatura: Introducción a la Inteligencia Artificial en Educación.
+        Asignatura: Introducción a la Inteligencia
+        Artificial en Educación.
       </p>
     </div>
 
     <div>
       <h4>Créditos del proyecto</h4>
       <p>Autor: Brian Mauricio Cabezas Dávila.</p>
-      <p>Integrantes adicionales: por completar.</p>
       <p>
         Herramientas utilizadas: Gemini, Cloudflare,
         Educaplay, HeyGen, Canva, Gamma y GitHub Pages.
@@ -1687,18 +1321,17 @@ Puedo ayudarte a comprender las deficiencias de nutrientes, interpretar análisi
   <div class="footer-bottom">
     © 2026 agroEduca | Proyecto académico de demostración.
   </div>
-
 </footer>
 
 <script>
 "use strict";
 
-/* CONFIGURACIÓN */
+/* CONEXIÓN CON EL SERVIDOR DE IA */
 
 const AGROTUTOR_ENDPOINT =
   "https://agrotutoria.xaalavaq.workers.dev";
 
-/* NAVEGACIÓN */
+/* MENÚ MÓVIL */
 
 function toggleMenu() {
   const nav = document.getElementById("nav-menu");
@@ -1708,7 +1341,7 @@ function toggleMenu() {
   button.setAttribute("aria-expanded", String(open));
   button.setAttribute(
     "aria-label",
-    open ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+    open ? "Cerrar menú" : "Abrir menú"
   );
   button.textContent = open ? "✕" : "☰";
 }
@@ -1719,9 +1352,11 @@ function closeMobileMenu() {
 
   nav.classList.remove("open");
   button.setAttribute("aria-expanded", "false");
-  button.setAttribute("aria-label", "Abrir menú de navegación");
+  button.setAttribute("aria-label", "Abrir menú");
   button.textContent = "☰";
 }
+
+/* NAVEGACIÓN ENTRE SECCIONES */
 
 function navigate(sectionId) {
   document.querySelectorAll("main > section")
@@ -1743,23 +1378,22 @@ function navigate(sectionId) {
   closeMobileMenu();
 
   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    top:0,
+    behavior:"smooth"
   });
 }
 
-/* JUEGOS EDUCAPLAY */
+/* SELECCIÓN DE JUEGOS */
 
 function selectLevel(index) {
-  for (let i = 0; i < 3; i++) {
+  for (let i=0; i<3; i++) {
     const selected = i === index;
 
-    document.getElementById("level-" + i).hidden =
+    document.getElementById("level-"+i).hidden =
       !selected;
 
-    const tab = document.getElementById("tab-" + i);
-
-    tab.classList.toggle("selected", selected);
+    const tab = document.getElementById("tab-"+i);
+    tab.classList.toggle("selected",selected);
     tab.setAttribute(
       "aria-selected",
       String(selected)
@@ -1767,14 +1401,16 @@ function selectLevel(index) {
   }
 }
 
-const PROGRESS_KEY = "agroEduca_completed_levels_v1";
+/* PROGRESO MANUAL */
+
+const PROGRESS_KEY =
+  "agroEduca_completed_levels_v1";
 
 function readSavedProgress() {
   try {
     const saved = JSON.parse(
       localStorage.getItem(PROGRESS_KEY) || "[]"
     );
-
     return Array.isArray(saved) ? saved : [];
   } catch {
     return [];
@@ -1801,11 +1437,11 @@ function updateProgress() {
     localStorage.setItem(
       PROGRESS_KEY,
       JSON.stringify(
-        checkboxes.map(checkbox => checkbox.checked)
+        checkboxes.map(box => box.checked)
       )
     );
   } catch {
-    // El progreso manual sigue funcionando en la sesión.
+    // El seguimiento manual sigue disponible.
   }
 }
 
@@ -1813,7 +1449,7 @@ function restoreProgress() {
   const saved = readSavedProgress();
 
   document.querySelectorAll(".level-done")
-    .forEach((checkbox, index) => {
+    .forEach((checkbox,index) => {
       checkbox.checked = saved[index] === true;
     });
 
@@ -1825,16 +1461,14 @@ function restoreProgress() {
 const chatHistory = [];
 let sending = false;
 
-function addMessage(text, type) {
+function addMessage(text,type) {
   const chat = document.getElementById("chat-messages");
-
   const wrapper = document.createElement("div");
+
   wrapper.className = "message " + type;
 
   const bubble = document.createElement("div");
   bubble.className = "bubble";
-
-  // textContent evita interpretar texto como HTML.
   bubble.textContent = text;
 
   wrapper.appendChild(bubble);
@@ -1847,21 +1481,18 @@ function addMessage(text, type) {
 
 function fillQuestion(text) {
   const input = document.getElementById("chat-text");
-
   input.value = text;
   input.focus();
 }
 
 document.getElementById("chat-form")
-  .addEventListener("submit", async event => {
-
+  .addEventListener("submit",async event => {
     event.preventDefault();
 
     if (sending) return;
 
     const input = document.getElementById("chat-text");
     const button = document.getElementById("send-button");
-
     const question = input.value.trim();
 
     if (!question) return;
@@ -1870,7 +1501,7 @@ document.getElementById("chat-form")
     button.disabled = true;
     button.textContent = "Enviando...";
 
-    addMessage(question, "user");
+    addMessage(question,"user");
     input.value = "";
 
     const responseBubble = addMessage(
@@ -1881,23 +1512,23 @@ document.getElementById("chat-form")
     try {
       const controller = new AbortController();
 
-      const timer = setTimeout(() => {
-        controller.abort();
-      }, 30000);
+      const timer = setTimeout(
+        () => controller.abort(),30000
+      );
 
       let response;
 
       try {
-        response = await fetch(AGROTUTOR_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
+        response = await fetch(AGROTUTOR_ENDPOINT,{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
           },
-          body: JSON.stringify({
-            message: question,
-            history: chatHistory.slice(-8)
+          body:JSON.stringify({
+            message:question,
+            history:chatHistory.slice(-8)
           }),
-          signal: controller.signal
+          signal:controller.signal
         });
       } finally {
         clearTimeout(timer);
@@ -1914,35 +1545,33 @@ document.getElementById("chat-form")
       responseBubble.textContent = data.reply;
 
       chatHistory.push({
-        role: "user",
-        text: question
+        role:"user",
+        text:question
       });
 
       chatHistory.push({
-        role: "model",
-        text: data.reply
+        role:"model",
+        text:data.reply
       });
 
       if (chatHistory.length > 8) {
         chatHistory.splice(
           0,
-          chatHistory.length - 8
+          chatHistory.length-8
         );
       }
 
-    } catch (error) {
+    } catch(error) {
       responseBubble.textContent =
         "No se pudo completar la consulta. " +
         (error.name === "AbortError"
-          ? "La respuesta tardó demasiado. Intenta nuevamente."
+          ? "La respuesta tardó demasiado."
           : error.message);
-
     } finally {
       sending = false;
       button.disabled = false;
       button.textContent = "Enviar";
     }
-
   });
 
 /* INICIALIZACIÓN */
@@ -1950,6 +1579,5 @@ document.getElementById("chat-form")
 restoreProgress();
 
 </script>
-
 </body>
 </html>
